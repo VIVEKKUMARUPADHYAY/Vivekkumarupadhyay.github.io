@@ -3,133 +3,447 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Website</title>
+  <title>Portfolio | Service Level & Performance Management</title>
   <style>
+    :root {
+      --navy: #0f172a;
+      --navy-light: #1e293b;
+      --violet: #7c3aed;
+      --violet-hover: #6d28d9;
+      --violet-soft: #ede9fe;
+      --white: #ffffff;
+      --bg-light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #f8fafc;
-      color: #1e293b;
+      background-color: var(--bg-light);
+      color: var(--text-main);
       line-height: 1.6;
     }
+
+    /* Navigation */
     header {
-      background-color: #0f172a;
-      color: #ffffff;
-      padding: 1.5rem 2rem;
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: #a78bfa;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
     nav a {
       color: #cbd5e1;
       text-decoration: none;
-      margin-left: 1.5rem;
+      font-size: 0.9rem;
       font-weight: 500;
+      transition: color 0.2s;
     }
+
     nav a:hover {
-      color: #ffffff;
+      color: #a78bfa;
     }
+
+    /* Hero / Home Section */
     .hero {
-      text-align: center;
-      padding: 5rem 2rem;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: white;
+      background: linear-gradient(135deg, var(--navy) 0%, #1e1b4b 100%);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
     }
-    .hero h1 {
+
+    .hero-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+    }
+
+    .hero-text {
+      flex: 1.2;
+    }
+
+    .headline-badge {
+      display: inline-block;
+      background-color: rgba(124, 58, 237, 0.25);
+      border: 1px solid #8b5cf6;
+      color: #ddd6fe;
+      padding: 0.4rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-text h1 {
       font-size: 2.5rem;
+      line-height: 1.2;
       margin-bottom: 1rem;
     }
-    .hero p {
-      font-size: 1.15rem;
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      opacity: 0.9;
+
+    .supporting-line {
+      font-size: 1.2rem;
+      color: #c4b5fd;
+      font-weight: 500;
+      margin-bottom: 1rem;
     }
+
+    .hero-intro {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
     .btn {
-      display: inline-block;
-      background-color: #ffffff;
-      color: #1d4ed8;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.4rem;
       border-radius: 6px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      display: inline-block;
     }
-    .container {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
+
+    .btn-primary {
+      background-color: var(--violet);
+      color: var(--white);
     }
-    .grid {
+
+    .btn-primary:hover {
+      background-color: var(--violet-hover);
+    }
+
+    .btn-outline {
+      border: 1.5px solid #a78bfa;
+      color: var(--white);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(167, 139, 250, 0.15);
+    }
+
+    /* 3 Proof Points Boxes */
+    .proof-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
     }
-    .card {
-      background: white;
-      padding: 1.5rem;
+
+    .proof-box {
+      background-color: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(167, 139, 250, 0.3);
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      padding: 1.1rem;
     }
-    .card h3 {
+
+    .proof-box h3 {
+      font-size: 1.5rem;
+      color: #a78bfa;
+      margin-bottom: 0.25rem;
+    }
+
+    .proof-box p {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      line-height: 1.3;
+    }
+
+    /* Photo Area */
+    .hero-photo {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-frame {
+      width: 320px;
+      height: 360px;
+      border-radius: 16px;
+      border: 4px solid var(--violet);
+      overflow: hidden;
+      background-color: var(--navy-light);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Sections General */
+    section {
+      padding: 4.5rem 2rem;
+    }
+
+    section:nth-child(even) {
+      background-color: var(--white);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      color: var(--navy);
       margin-bottom: 0.5rem;
-      color: #0f172a;
+      position: relative;
+      display: inline-block;
     }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 4px;
+      background-color: var(--violet);
+      margin-top: 0.4rem;
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Cards & Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      transition: transform 0.2s;
+    }
+
+    section:nth-child(even) .card {
+      background: var(--bg-light);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: #c4b5fd;
+    }
+
+    .card h3 {
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--violet);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    /* Skills Pills */
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background-color: var(--violet-soft);
+      color: var(--violet-hover);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* Resume Banner */
+    .resume-box {
+      background: linear-gradient(135deg, var(--navy), #2e1065);
+      color: var(--white);
+      padding: 3rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .resume-box h2 {
+      margin-bottom: 0.75rem;
+    }
+
+    .resume-box p {
+      color: #cbd5e1;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
     footer {
+      background-color: var(--navy);
+      color: #94a3b8;
       text-align: center;
       padding: 2rem;
-      color: #64748b;
       font-size: 0.9rem;
+    }
+
+    /* Mobile Responsive: Photo moves ABOVE text */
+    @media (max-width: 850px) {
+      .hero-container {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero-intro {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-group {
+        justify-content: center;
+      }
+
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-frame {
+        width: 240px;
+        height: 270px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
   <header>
-    <h2>Your Name / Brand</h2>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">Your<span>Name</span></a>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to My Website</h1>
-    <p>Hosted for free using GitHub Pages. Edit this text to introduce yourself, your project, or your business.</p>
-    <a href="#projects" class="btn">Explore My Work</a>
-  </section>
+  <!-- 1. Home Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <!-- Text on Left -->
+      <div class="hero-text">
+        <div class="headline-badge">Service Level &amp; Performance Management | Data Analytics | Power BI</div>
+        <h1>Turning Operational Data into Measurable SLA Excellence</h1>
+        <p class="supporting-line">Driving accountability, governance, and executive visibility across complex service delivery environments.</p>
+        <p class="hero-intro">
+          I specialize in bridging service management and business intelligence—designing automated Power BI dashboards and governance frameworks that consistently elevate SLA performance and operational efficiency.
+        </p>
 
-  <div class="container" id="about">
-    <h2>About Me</h2>
-    <p>Write a short paragraph here about who you are, what you do, and what visitors can find on this website.</p>
-  </div>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#resume" class="btn btn-outline">View Resume</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
+        </div>
 
-  <div class="container" id="projects">
-    <h2>Featured Projects</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Project One</h3>
-        <p>A brief description of your first project, tool, or service.</p>
+        <!-- 3 Proof Points Boxes -->
+        <div class="proof-grid">
+          <div class="proof-box">
+            <h3>10+ Years</h3>
+            <p>Experience in Service Delivery &amp; Analytics</p>
+          </div>
+          <div class="proof-box">
+            <h3>99 SLAs</h3>
+            <p>Managed &amp; Governed Monthly</p>
+          </div>
+          <div class="proof-box">
+            <h3>82% → 96%</h3>
+            <p>SLA Performance Improvement</p>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Project Two</h3>
-        <p>A brief description of your second project, tool, or service.</p>
-      </div>
-      <div class="card">
-        <h3>Project Three</h3>
-        <p>A brief description of your third project, tool, or service.</p>
+
+      <!-- Photo on Right (Moves above text on mobile) -->
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <!-- Replace 'profile.jpg' with your actual image file name in GitHub -->
+          <img src="profile.jpg" alt="Profile Photo" />
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <footer id="contact">
-    <p>Contact: youremail@example.com | Built with GitHub Pages</p>
-  </footer>
-
-</body>
-</html>
